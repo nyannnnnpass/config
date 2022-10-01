@@ -1,0 +1,39 @@
+! swap Capslock and Ctrl_L  
+! here's original settings  
+! keycode  37 = Control_L NoSymbol Control_L     
+! keycode  66 = Caps_Lock NoSymbol Caps_Lock  
+clear lock  
+clear control                                                                                                                                                                                  
+keycode 37 = Caps_Lock NoSymbol Caps_Lock  
+keycode 66 = Control_L NoSymbol Control_L  
+add lock = Caps_Lock  
+add control = Control_L Control_R
+
+! swap Escape and grave(~)  
+! here's original settings  
+! keycode   9 = Escape NoSymbol Escape  
+! keycode  49 = grave asciitilde grave asciitilde  
+keycode 9 = grave asciitilde grave asciitilde  
+keycode 49 = Escape NoSymbol Escape
+
+! Use windows key as Mode_switch  
+! here's original settings  
+! keycode 133 = Super_L NoSymbol Super_L  
+!  
+! Add the next 2 lines into ~/.config/kwinrc  
+! to disbale pop up menu when press windows key.  
+! [ModifierOnlyShortcuts]  
+! Meta=                                                                                                                                                                                        
+remove mod4 = Super_L  
+keycode 133 = Mode_switch NoSymbol NoSymbol NoSymbol
+
+! Use Mode_switch + hjkl as arrow keys.  
+! here's original settings  
+! keycode  43 = h H h H     
+! keycode  44 = j J j J     
+! keycode  45 = k K k K     
+! keycode  46 = l L l L  
+keycode 43 = h H Left NoSymbol  
+keycode 44 = j J Down NoSymbol  
+keycode 45 = k K Up NoSymbol  
+keycode 46 = l L Right NoSymbol

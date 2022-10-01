@@ -21,7 +21,7 @@ call plug#begin()
 Plug 'vim-airline/vim-airline'
 
 " Color scheme
-Plug 'tomasiser/vim-code-dark'
+" Plug 'tomasiser/vim-code-dark'
 
 " Optional
 Plug 'vim-airline/vim-airline-themes'
@@ -31,6 +31,11 @@ Plug 'scrooloose/nerdtree'
 
 " Automatically show Vim's complete menu while typing
 Plug 'vim-scripts/AutoComplPop'
+
+" coc 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+Plug 'Yggdroot/indentLine'
 
 " Initialize plugin system
 call plug#end()
@@ -63,6 +68,14 @@ autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTa
 " open and close nerdtree with Ctrl+n
 map <C-n> :NERDTreeToggle<CR>
 
+" neoclide/coc.nvim
+" To make <cr> select the first completion item and confirm the completion when no item has been selected.
+" inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+" Use <Tab> and <S-Tab> to navigate the completion lists.
+inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
+inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
+
 " -----------------------------------------------------------------------------
 " General
 " -----------------------------------------------------------------------------
@@ -79,6 +92,9 @@ filetype indent on
 
 " Use comma as <leader>
 let mapleader="\<space>"
+inoremap jk <ESC>
+noremap 0 ^
+noremap 9 g_
 
 " Auto read file once changed outside
 set autoread
@@ -117,10 +133,9 @@ endif
 " Enable syntax highlighting
 syntax enable
 
-
-" Color scheme https://github.com/tomasiser/vim-code-dark
-" See Plugin Management Part
-colorscheme codedark
+" set background=dark
+" set background=light
+" colorscheme solarized
 
 " -----------------------------------------------------------------------------
 " User Interface
@@ -133,6 +148,7 @@ set number
 set wildmenu
 
 set cursorline
+" hi CursorLine term=bold cterm=NONE ctermul=NONE ctermbg=DarkGrey
 set ruler
 set showcmd
 set showmode
@@ -191,8 +207,10 @@ map <leader>h :bprevious<cr>
 " -----------------------------------------------------------------------------
 
 " Folding based on indent
-set foldmethod=indent
+" set foldmethod=indent
+set foldmethod=syntax
 set foldlevel=10
+set foldclose=all
 nnoremap <leader>a za
 
 " -----------------------------------------------------------------------------
